@@ -28,6 +28,18 @@ public class MonederoServiceImpl implements MonederoService {
     MonederoUtil util;
 
     @Override
+    public Multi<Monedero> listarMonedero() {
+        return monederoRepository.listAll()
+                .onItem()
+                .<Monedero>disjoint()
+                .map(mo -> {
+                    Monedero monedero = new Monedero();
+                    monedero = mo;
+                    return monedero;
+                });
+    }
+
+    @Override
     public Uni<Monedero> guardarMonedero(Monedero monedero) {
         return monederoRepository.persist(monedero);
     }

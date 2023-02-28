@@ -8,12 +8,14 @@ import io.smallrye.mutiny.Uni;
 
 public interface MonederoService {
 
-    //Multi<Monedero> listarMonedero();
+    Multi<Monedero> listarMonedero();
 
     //Uni<Monedero> buscarMonederoXId(String id);
 
     Uni<Monedero> guardarMonedero(Monedero monedero);
 
+    //modoPago: 1-celular
+    //modoPago: 2-numeroCuenta
     Uni<String> generarSolicitudcompraBootCoin(String id, Double monto, String modoPago);
 
     Uni<String> aceptarSolicitudcompraBootCoin(String id, String numeroSolicitud, String numeroCuentaSolicitud);

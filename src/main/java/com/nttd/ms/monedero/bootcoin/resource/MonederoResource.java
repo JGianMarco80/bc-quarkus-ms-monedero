@@ -19,6 +19,11 @@ public class MonederoResource {
     @Inject
     MonederoService monederoService;
 
+    @GET
+    public Multi<Monedero> listarMonedero() {
+        return monederoService.listarMonedero();
+    }
+
     @POST
     @Transactional
     public Uni<Monedero> guardarMonedero(Monedero monedero) {
@@ -43,7 +48,7 @@ public class MonederoResource {
 
     @GET
     @Path("/solicitudes-bootCoin")
-    public Multi<SolicitarCompraBootCoin> listAllRedis(){
+    public Multi<SolicitarCompraBootCoin> obtenerSolicitudes(){
         return monederoService.obtenerSolicitudes();
     }
 
